@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.1.0...v1.2.0) (2023-04-26)
+
+
+### Features
+
+* **images:** adds payfastlogo and package screenshot ([46313ad](https://github.com/Allmacamo/react-native-payfast-checkout/commit/46313ad3736aaeb58bc280b2c02f53ac8509e547))
+* **readme:** updates readme with implementation guide ([c743b2a](https://github.com/Allmacamo/react-native-payfast-checkout/commit/c743b2aea292ae49e8a024d95461a9bb82253b70))
+* **text color:** updates text color to white ([13814aa](https://github.com/Allmacamo/react-native-payfast-checkout/commit/13814aa8b2c981d3a612ef9e93b94467c5220ae8))
+
 # [1.1.0](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.0.0...v1.1.0) (2023-04-26)
 
 

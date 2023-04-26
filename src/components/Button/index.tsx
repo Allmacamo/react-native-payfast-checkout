@@ -37,17 +37,14 @@ const StyledButton = ({
       style={{
         ...defaultStyling,
         ...rest,
-        backgroundColor: "#156332"
+        backgroundColor: '#156332'
       }}
     >
       {loading ? (
         <ActivityIndicator color="white" />
       ) : (
         <Flex flexDirection="row" alignItems="center">
-          <StyledText
-          >
-            {text}
-          </StyledText>
+          <StyledText color="white">{text}</StyledText>
         </Flex>
       )}
     </TouchableOpacity>
