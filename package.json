@@ -1,0 +1,60 @@
+{
+  "name": "react-native-paystack-checkout",
+  "version": "1.0.0",
+  "description": "Integrate Paystack to your React Native mobile app",
+  "repository": "https://github.com/Allmacamo/react-native-paystack-checkout.git",
+  "author": "Alain Macamo <allmacamo@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "react-native",
+    "payfast",
+    "payment-gateway",
+    "payment-processing",
+    "payment-integration",
+    "checkout",
+    "mobile-payments",
+    "secure-payments",
+    "e-commerce",
+    "online-payments",
+    "payment-api",
+    "payment-methods",
+    "payment-gateway-api"
+  ],
+  "dependencies": {
+    "react-native-webview": "11.18.1"
+  },
+  "peerDependencies": {},
+  "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/npm": "^7.0.10",
+    "@semantic-release/release-notes-generator": "^9.0.1",
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-native": "^3.8.1",
+    "prettier": "^2.0.5",
+    "semantic-release": "^17.3.7",
+    "@typescript-eslint/eslint-plugin": "^3.6.0",
+    "@typescript-eslint/parser": "^3.6.0"
+  },
+  "release": {
+    "branches": [
+      "develop"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      "@semantic-release/git"
+    ]
+  }
+}
