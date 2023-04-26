@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import { ActivityIndicator, SafeAreaView } from 'react-native'
+import { ActivityIndicator, Modal, SafeAreaView } from 'react-native'
 import WebView, { WebViewMessageEvent, WebViewNavigation } from 'react-native-webview'
+import { buildQueryString, generateMD5, removeUndefined } from './Helpers'
 import Button from './components/Button'
 import Flex from './components/Flex'
-import StyledText from "./components/StyledText"
-import { buildQueryString, generateMD5, removeUndefined } from './helpers'
+import StyledText from './components/StyledText'
 
 export type PayFastTransactionDetails = {
   customerFirstName?: string
@@ -113,47 +113,47 @@ export const PayFast = ({
   }
 
   return (
-    <Modal visible={isVisible} animationType='slide'>
-    <SafeAreaView style={{height:"100%"}}>
-      {showWeb ? (
-        <Flex height="100%" width="100%" justifyContent="center">
-          <WebView
-            onNavigationStateChange={handleNavigationChange}
-            style={{ flex: 1 }}
-            startInLoadingState
-            injectedJavaScript={injectedJavaScript}
-            onMessage={handleMessage}
-            renderLoading={() => (
-              <Flex height="100%" width="100%" justifyContent="center">
-                <ActivityIndicator size="large" color={theme.colors.primary} />
-                <Button marginTop={50} text="Cancel" onPress={onClose} />
-              </Flex>
-            )}
-            onError={(error) => (
-              <Flex height="100%" width="100%" justifyContent="center">
-                <StyledText>There has been an error</StyledText>
-                <Button marginTop={50} text="Cancel" onPress={onClose} />
-              </Flex>
-            )}
-            source={{
-              uri,
-              headers: {
-                Accept: '*/*',
-                'Content-Type': 'application/x-www-form-urlencoded'
-              },
-              method: 'POST',
-              body: postBody
-            }}
-          />
-        </Flex>
-      ) : (
-        <Flex height="100%" width="100%" justifyContent="center">
-          <ActivityIndicator size="large" color={theme.colors.primary} />
-          <Button marginTop={50} text="Cancel" onPress={onClose} />
-        </Flex>
-      )}
-    </SafeAreaView>
-  </Modal>
+    <Modal visible={isVisible} animationType="slide">
+      <SafeAreaView style={{ height: '100%' }}>
+        {showWeb ? (
+          <Flex height="100%" width="100%" justifyContent="center">
+            <WebView
+              onNavigationStateChange={handleNavigationChange}
+              style={{ flex: 1 }}
+              startInLoadingState
+              injectedJavaScript={injectedJavaScript}
+              onMessage={handleMessage}
+              renderLoading={() => (
+                <Flex height="100%" width="100%" justifyContent="center">
+                  <ActivityIndicator size="large" />
+                  <Button marginTop={50} text="Cancel" onPress={onClose} />
+                </Flex>
+              )}
+              onError={(error) => (
+                <Flex height="100%" width="100%" justifyContent="center">
+                  <StyledText>There has been an error</StyledText>
+                  <Button marginTop={50} text="Cancel" onPress={onClose} />
+                </Flex>
+              )}
+              source={{
+                uri,
+                headers: {
+                  Accept: '*/*',
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                method: 'POST',
+                body: postBody
+              }}
+            />
+          </Flex>
+        ) : (
+          <Flex height="100%" width="100%" justifyContent="center">
+            <ActivityIndicator size="large" />
+            <Button marginTop={50} text="Cancel" onPress={onClose} />
+          </Flex>
+        )}
+      </SafeAreaView>
+    </Modal>
   )
 }
 
