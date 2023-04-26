@@ -1,3 +1,4 @@
-import PayFast from './src/Payfast'
+import PayFast, { PayFastTransactionDetails } from './src/Payfast'
 
+export { PayFastTransactionDetails }
 export default PayFast
