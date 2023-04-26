@@ -1,8 +1,8 @@
 {
-  "name": "react-native-paystack-checkout",
+  "name": "react-native-payfast-checkout",
   "version": "1.0.0",
   "description": "Integrate Paystack to your React Native mobile app",
-  "repository": "https://github.com/Allmacamo/react-native-paystack-checkout.git",
+  "repository": "https://github.com/Allmacamo/react-native-payfast-checkout.git",
   "author": "Alain Macamo <allmacamo@gmail.com>",
   "license": "MIT",
   "keywords": [
