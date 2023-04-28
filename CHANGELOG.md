@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.2.1...v1.3.0) (2023-04-28)
+
+
+### Features
+
+* **reference:** optionally returns trans reference onClose ([2a00bbe](https://github.com/Allmacamo/react-native-payfast-checkout/commit/2a00bbe5292ab4262097d956b71dbc5bc5303a17))
+
 ## [1.2.1](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.2.0...v1.2.1) (2023-04-28)
 
 
