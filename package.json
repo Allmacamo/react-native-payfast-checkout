@@ -1,6 +1,6 @@
 {
   "name": "react-native-payfast-checkout",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Integrate Paystack to your React Native mobile app",
   "repository": "https://github.com/Allmacamo/react-native-payfast-checkout.git",
   "author": "Alain Macamo <allmacamo@gmail.com>",
