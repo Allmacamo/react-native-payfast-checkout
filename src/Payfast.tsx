@@ -27,7 +27,7 @@ type Props = {
   merchantKey?: string
   isVisible: boolean
   passPhrase?: string
-  onClose: () => void
+  onClose: (reference?: string) => void
 }
 
 export const PayFast = ({
@@ -64,8 +64,8 @@ export const PayFast = ({
   }
   const TRANSACTION_DETAILS = {
     m_payment_id: transactionDetails?.reference,
-    amount: transactionDetails.amount,
-    item_name: transactionDetails.itemName,
+    amount: transactionDetails?.amount,
+    item_name: transactionDetails?.itemName,
     item_description: transactionDetails?.itemDescription,
     payment_method: paymentMethod || 'cc'
   }
@@ -108,7 +108,7 @@ export const PayFast = ({
     if (event.url.includes('finish')) {
       setShowWeb(false)
       setPostBody('')
-      onClose()
+      onClose(TRANSACTION_DETAILS?.m_payment_id)
     }
   }
 
