@@ -57,16 +57,16 @@ export const PayFast = ({
   `
 
   const CUSTOMER_DATA = {
-    name_first: transactionDetails.customerFirstName,
-    name_last: transactionDetails.customerLastName,
-    email_address: transactionDetails.customerEmailAddress,
-    cell_number: transactionDetails.customerPhoneNumber
+    name_first: transactionDetails?.customerFirstName,
+    name_last: transactionDetails?.customerLastName,
+    email_address: transactionDetails?.customerEmailAddress,
+    cell_number: transactionDetails?.customerPhoneNumber
   }
   const TRANSACTION_DETAILS = {
-    m_payment_id: transactionDetails.reference,
+    m_payment_id: transactionDetails?.reference,
     amount: transactionDetails.amount,
     item_name: transactionDetails.itemName,
-    item_description: transactionDetails.itemDescription,
+    item_description: transactionDetails?.itemDescription,
     payment_method: paymentMethod || 'cc'
   }
 
