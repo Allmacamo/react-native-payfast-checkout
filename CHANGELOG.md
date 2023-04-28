@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.2.0...v1.2.1) (2023-04-28)
+
+
+### Bug Fixes
+
+* **customer data:** makes customer data fields optional ([64eae7b](https://github.com/Allmacamo/react-native-payfast-checkout/commit/64eae7bd74cbb1da1ad039965fed6819b9c800ca))
+
 # [1.2.0](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.1.0...v1.2.0) (2023-04-26)
 
 
