@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ActivityIndicator, Modal, SafeAreaView } from 'react-native'
-import WebView, { WebViewMessageEvent, WebViewNavigation } from 'react-native-webview'
+import { WebView, WebViewMessageEvent, WebViewNavigation } from 'react-native-webview'
 import { buildQueryString, generateMD5, removeUndefined } from './Helpers'
 import Button from './components/Button'
 import Flex from './components/Flex'
