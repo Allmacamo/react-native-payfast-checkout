@@ -6,9 +6,14 @@ This is a React Native package for integration of Payfast payment gateway into y
 
 ## Features
 
+- Make a once off payment for any product/service within the app
 - Easy to use package for integrating Payfast payment gateway into your React Native app
 - Written in TypeScript, providing type definitions and improved developer experience
-- Compatible with React Native Expo
+- Compatible with React Native & React Native Expo
+
+## Upcoming Features
+
+- Recurring Billing / Subscriptions
 
 ## Props
 
@@ -47,16 +52,16 @@ Options
 
 ### Transaction Details
 
-| Name                 | Type   | Description                               | Required | Default Value |
-| -------------------- | ------ | ----------------------------------------- | -------- | ------------- |
-| customerFirstName    | String | Customer First Name                       | No       | N/A           |
-| customerLastName     | String | Customer Last Name                        | No       | N/A           |
-| customerEmailAddress | String | Customer Email address                    | No       | N/A           |
-| customerPhoneNumber  | String | Customer Phone Number                     | No       | N/A           |
-| reference            | String | Transaction Reference                     | No       | N/A           |
-| amount               | Number | Transaction Amount in South African Rands | Yes      | N/A           |
-| itemName             | String | Name of item being paid for               | Yes      | N/A           |
-| itemDescription      | String | Description of the item being paid for    | No       | N/A           |
+| Name                 | Type   | Description                               | Required |
+| -------------------- | ------ | ----------------------------------------- | -------- |
+| customerFirstName    | String | Customer First Name                       | No       |
+| customerLastName     | String | Customer Last Name                        | No       |
+| customerEmailAddress | String | Customer Email address                    | No       |
+| customerPhoneNumber  | String | Customer Phone Number                     | No       |
+| reference            | String | Transaction Reference                     | No       |
+| amount               | Float  | Transaction Amount in South African Rands | Yes      |
+| itemName             | String | Name of item being paid for               | Yes      |
+| itemDescription      | String | Description of the item being paid for    | No       |
 
 ## How to use the package
 
@@ -73,6 +78,12 @@ or Npm
 npm install react-native-payfast-checkout
 ```
 
+or Expo
+
+```
+npx expo install react-native-payfast-checkout
+```
+
 Use the package in your cart or checkout screen
 
 ```
@@ -85,7 +96,7 @@ const CartScreen = () => {
     ...
     const transactionDetails = {
         itemName:'iPhone',
-        amount: 1500
+        amount: 1500.25
     }
     return <View>
     ...
