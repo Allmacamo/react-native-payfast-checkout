@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.3.0...v1.3.1) (2023-05-01)
+
+
+### Bug Fixes
+
+* **webview:** corrects webview import currently crushing on Android ([e74e30b](https://github.com/Allmacamo/react-native-payfast-checkout/commit/e74e30bef6f3df4407da13d6ac7c67d6dd3afe7a))
+
 # [1.3.0](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.2.1...v1.3.0) (2023-04-28)
 
 
