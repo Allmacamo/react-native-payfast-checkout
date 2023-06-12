@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.3.1...v1.4.0) (2023-06-12)
+
+
+### Features
+
+* **types:** adds payfast types for easy reference ([daefd73](https://github.com/Allmacamo/react-native-payfast-checkout/commit/daefd73b4000959847a34a2d10f672e7f4e27770))
+
 ## [1.3.1](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.3.0...v1.3.1) (2023-05-01)
 
 
