@@ -48,7 +48,7 @@ export const PayFast = ({
 
   const uri = sandbox
     ? 'https://sandbox.payfast.co.za/eng/process'
-    : 'http://www.payfast.co.za/eng/process'
+    : 'https://www.payfast.co.za/eng/process'
 
   const injectedJavaScript = `
     document.getElementById("error-btn-back").addEventListener("click", function() {
