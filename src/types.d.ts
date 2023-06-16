@@ -33,3 +33,11 @@ export type PayFastMerchantDetails = {
   merchantKey?: string
   passPhrase?: string
 }
+
+export type ChargeCardToken = {
+  token: string
+  total: number
+  itemName: string
+  itemDescription?: string
+  reference: string
+}

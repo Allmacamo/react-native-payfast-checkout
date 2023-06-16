@@ -1,6 +1,7 @@
 import PayFast from './src/Payfast'
 import PayFastSaveCard from './src/SaveCard'
 import PayFastUpdateCard from './src/UpdateCard'
+import usePayFast from './src/hooks'
 import {
   PayFastMerchantDetails,
   PayFastSubscriptionDetails,
@@ -14,6 +15,7 @@ export {
   PayFastSubscriptionDetails,
   PayFastSubscriptionFrequency,
   PayFastTransactionDetails,
-  PayFastUpdateCard
+  PayFastUpdateCard,
+  usePayFast
 }
 export default PayFast
