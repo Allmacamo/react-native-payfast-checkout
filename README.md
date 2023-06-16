@@ -128,6 +128,7 @@ Adding saving a card for future use
 Unfortunately Payfast does not return any details for your saved card, except for the token, therefore you can't show the last 4 digits for the user to remember the card they saved, but the update card screen shows the last 4 digits and the expiry date
 
 ```tsx
+...
 import {PayFastSaveCard} from 'react-native-payfast-checkout'
 ...
 const PaymentOptionsScreen = () => {
@@ -170,6 +171,43 @@ const PaymentOptionsScreen = () => {
 }
 
 export default PaymentOptionsScreen
+```
+
+Using a token in a transaction
+
+```tsx
+...
+import { usePayFast } from 'react-native-payfast-checkout'
+...
+
+const CheckoutScreen = () => {
+    ...
+    const { chargeCardToken } = usePayFast({
+        merchantId:{process.env.PAYFAST_MERCHANT_ID}
+        passPhrase:{process.env.PAYFAST_SIGNATURE_PHRASE}
+    })
+    ...
+    const onCheckout = async( ) => {
+        try {
+            const { message, pf_payment_id } = await chargeCardToken({
+                token:'',
+                total:10000 // in cents e.g 10000 = R100,
+                reference:'',
+                itemName:''
+            })
+        } catch(error){
+            console.log({error})
+        }
+    }
+    ...
+    return <View>
+    ...
+        <Button text='Checkout' onPress={() => onCheckout() } />
+    ...
+    </View>
+}
+
+export default CheckoutScreen
 ```
 
 ### Official Documentation
