@@ -6,14 +6,21 @@ This is a React Native package for integration of Payfast payment gateway into y
 
 ## Features
 
-- Make a once off payment for any product/service within the app
-- Easy to use package for integrating Payfast payment gateway into your React Native app
-- Written in TypeScript, providing type definitions and improved developer experience
-- Compatible with React Native & React Native Expo
+- Make once off or repeat payments using a bank card e.g Cheque or Credit Card
+- Save bank card for future use (Tokenization), token sent to your notifyUrl
+- Update saved bank card details
+- Hook/Function to make a payment with saved card / token
 
 ## Upcoming Features
 
 - Recurring Billing / Subscriptions
+
+## About the package
+
+- Make a once off payment for any product/service within the app
+- Easy to use package for integrating Payfast payment gateway into your React Native app
+- Written in TypeScript, providing type definitions and improved developer experience
+- Compatible with React Native & React Native Expo
 
 ## Props
 
@@ -68,25 +75,25 @@ Options
 Install the latest version of the package
 Using Yarn
 
-```
+```bash
 yarn add react-native-payfast-checkout
 ```
 
 or Npm
 
-```
+```bash
 npm install react-native-payfast-checkout
 ```
 
 or Expo
 
-```
+```bash
 npx expo install react-native-payfast-checkout
 ```
 
 Use the package in your cart or checkout screen
 
-```
+```tsx
 ...
 import Payfast from 'react-native-payfast-checkout'
 ...
@@ -114,6 +121,55 @@ const CartScreen = () => {
 }
 
 export default CartScreen
+```
+
+Adding saving a card for future use
+
+Unfortunately Payfast does not return any details for your saved card, except for the token, therefore you can't show the last 4 digits for the user to remember the card they saved, but the update card screen shows the last 4 digits and the expiry date
+
+```tsx
+import {PayFastSaveCard} from 'react-native-payfast-checkout'
+...
+const PaymentOptionsScreen = () => {
+
+    const [showAddCard, setShowAddCard] = useState(false)
+    const [showUpdateCard, setShowUpdateCard] = useState(false)
+
+    const transactionDetails = {
+        customerFirstName: 'John',
+        customerLastName: 'Doe',
+        customerEmailAddress: 'name@email.com',
+    }
+
+    return <View>
+    ...
+    <PayFastSaveCard
+        transactionDetails={transactionDetails}
+        merchantId={process.env.PAYFAST_MERCHANT_ID}
+        merchantKey={process.env.PAYFAST_MERCHANT_KEY}
+        passPhrase={process.env.PAYFAST_SIGNATURE_PHRASE}
+        notifyUrl=''
+        isVisible={showAddCard}
+        onClose={(isDone) => {
+            // Do things here then
+            setShowAddCard(false)
+        }}
+    />
+    ...
+    <PayFastUpdateCard
+        cardToken=''
+        isVisible={showUpdateCard}
+        sandbox
+        onClose={() => {
+            // Do things here
+            setShowUpdateCard(false)
+        }}
+    />
+    ...
+    </View>
+}
+
+export default PaymentOptionsScreen
 ```
 
 ### Official Documentation
