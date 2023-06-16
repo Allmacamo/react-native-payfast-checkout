@@ -21,6 +21,8 @@
     "payment-gateway-api"
   ],
   "dependencies": {
+    "axios": "^1.4.0",
+    "date-fns": "^2.30.0",
     "react-native-webview": "^11.18.1"
   },
   "peerDependencies": {
