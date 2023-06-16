@@ -1,3 +1,26 @@
+# [1.6.0](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.5.0...v1.6.0) (2023-06-16)
+
+
+### Features
+
+* **charge:** adds hook to charge a card token ([ff9954d](https://github.com/Allmacamo/react-native-payfast-checkout/commit/ff9954d32250f31c359190239e3950cd425d67ec))
+* **types:** adds chargeCardToken hook ([6cf0044](https://github.com/Allmacamo/react-native-payfast-checkout/commit/6cf0044b1b99e1870902edd924a6b58c1d5c4a1d))
+
+# [1.5.0](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.4.0...v1.5.0) (2023-06-16)
+
+
+### Bug Fixes
+
+* **payfast:** fix query string generation ([ce7fa19](https://github.com/Allmacamo/react-native-payfast-checkout/commit/ce7fa196521e073bafd7bb2370d383cbd70c5fb2))
+
+
+### Features
+
+* **new types:** adds new types for export ([50db99e](https://github.com/Allmacamo/react-native-payfast-checkout/commit/50db99e73168588339ff834ed65ae3efea39fa63))
+* **save card:** adda ability to save card for future use ([3dcf57e](https://github.com/Allmacamo/react-native-payfast-checkout/commit/3dcf57e68b70416c35d00ae81cfed2352477afa0))
+* **types:** adds PayFastTransactionDetails and PayFastMerchantDetails types ([c819634](https://github.com/Allmacamo/react-native-payfast-checkout/commit/c819634d6e76f80666a631c0174a2740eb9ac2dd))
+* **update card:** adds ability to update saved card ([202734d](https://github.com/Allmacamo/react-native-payfast-checkout/commit/202734d680088c8d6ab7775ed572c285061201fb))
+
 # [1.4.0](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.3.1...v1.4.0) (2023-06-12)
 
 

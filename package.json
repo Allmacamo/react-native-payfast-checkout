@@ -1,6 +1,6 @@
 {
   "name": "react-native-payfast-checkout",
-  "version": "1.4.0",
+  "version": "1.6.0",
   "description": "Integrate Paystack to your React Native mobile app",
   "repository": "https://github.com/Allmacamo/react-native-payfast-checkout.git",
   "author": "Alain Macamo <allmacamo@gmail.com>",
@@ -21,6 +21,8 @@
     "payment-gateway-api"
   ],
   "dependencies": {
+    "axios": "^1.4.0",
+    "date-fns": "^2.30.0",
     "react-native-webview": "^11.18.1"
   },
   "peerDependencies": {
