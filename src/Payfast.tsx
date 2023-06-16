@@ -5,32 +5,16 @@ import { buildQueryString, generateMD5, removeUndefined } from './Helpers'
 import Button from './components/Button'
 import Flex from './components/Flex'
 import StyledText from './components/StyledText'
+import { PayFastMerchantDetails, PayFastTransactionDetails } from './types'
 
-export type PayFastTransactionDetails = {
-  customerFirstName?: string
-  customerLastName?: string
-  customerEmailAddress?: string
-  customerPhoneNumber?: string
-  reference?: string
-  amount: number
-  itemName: string
-  itemDescription?: string
-}
-
-type Props = {
+type Props = PayFastMerchantDetails & {
   paymentMethod?: 'ef' | 'cc' | 'dc' | 'mp' | 'mc' | 'sc' | 'ss' | 'zp' | 'mt' | 'rcs'
   transactionDetails: PayFastTransactionDetails
-  notifyUrl?: string
-  sandbox?: boolean
-  signature?: boolean
-  merchantId?: string
-  merchantKey?: string
   isVisible: boolean
-  passPhrase?: string
   onClose: (reference?: string) => void
 }
 
-export const PayFast = ({
+const PayFast = ({
   paymentMethod,
   isVisible,
   onClose,
@@ -83,9 +67,9 @@ export const PayFast = ({
   const getQueryString = () => {
     let queryString = buildQueryString(CLEAN_PAYLOAD)
     if (signature) {
-      const queryStringWithPassPhrase = queryString + 'passphrase=' + passPhrase
+      const queryStringWithPassPhrase = queryString + '&passphrase=' + passPhrase
       const signature = generateMD5(queryStringWithPassPhrase)
-      queryString += 'signature=' + signature
+      queryString = queryStringWithPassPhrase + '&signature=' + signature
     }
     setPostBody(queryString)
     setShowWeb(true)
