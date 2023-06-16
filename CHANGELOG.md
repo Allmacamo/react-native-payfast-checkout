@@ -1,3 +1,11 @@
+# [1.6.0](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.5.0...v1.6.0) (2023-06-16)
+
+
+### Features
+
+* **charge:** adds hook to charge a card token ([ff9954d](https://github.com/Allmacamo/react-native-payfast-checkout/commit/ff9954d32250f31c359190239e3950cd425d67ec))
+* **types:** adds chargeCardToken hook ([6cf0044](https://github.com/Allmacamo/react-native-payfast-checkout/commit/6cf0044b1b99e1870902edd924a6b58c1d5c4a1d))
+
 # [1.5.0](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.4.0...v1.5.0) (2023-06-16)
 
 
