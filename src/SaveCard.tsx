@@ -11,11 +11,10 @@ type Props = PayFastMerchantDetails & {
   paymentMethod?: 'ef' | 'cc' | 'dc' | 'mp' | 'mc' | 'sc' | 'ss' | 'zp' | 'mt' | 'rcs'
   transactionDetails: PayFastTransactionDetails
   isVisible: boolean
-  onClose: (reference?: string) => void
+  onClose: (isDone?: boolean) => void
 }
 
-const PayFast = ({
-  paymentMethod,
+const PayFastSaveCard = ({
   isVisible,
   onClose,
   sandbox,
@@ -35,23 +34,23 @@ const PayFast = ({
     : 'https://www.payfast.co.za/eng/process'
 
   const injectedJavaScript = `
-    document.getElementById("error-btn-back").addEventListener("click", function() {
-      window.ReactNativeWebView.postMessage("PRESSED_GO_BACK");
-    });
+  document.getElementById("error-btn-back").addEventListener("click", ()=> {
+    window.ReactNativeWebView.postMessage("PRESSED_GO_BACK");
+  });
   `
 
   const CUSTOMER_DATA = {
-    name_first: transactionDetails?.customerFirstName,
+    name_first: transactionDetails.customerFirstName,
     name_last: transactionDetails?.customerLastName,
-    email_address: transactionDetails?.customerEmailAddress,
+    email_address: transactionDetails.customerEmailAddress,
     cell_number: transactionDetails?.customerPhoneNumber
   }
   const TRANSACTION_DETAILS = {
-    m_payment_id: transactionDetails?.reference,
-    amount: transactionDetails?.amount,
-    item_name: transactionDetails?.itemName,
-    item_description: transactionDetails?.itemDescription,
-    payment_method: paymentMethod || 'cc'
+    m_payment_id: transactionDetails?.reference || new Date().getTime().toString(),
+    amount: 0,
+    item_name: 'Save Card',
+    payment_method: 'cc',
+    subscription_type: 2
   }
 
   const PAYLOAD = {
@@ -81,8 +80,8 @@ const PayFast = ({
     }
   }, [isVisible])
 
-  const handleMessage = (event: WebViewMessageEvent) => {
-    if (event.nativeEvent.data === 'PRESSED_GO_BACK') {
+  const handleMessage = ({ nativeEvent }: WebViewMessageEvent) => {
+    if (nativeEvent.data === 'PRESSED_GO_BACK') {
       setShowWeb(false)
       onClose()
     }
@@ -92,10 +91,9 @@ const PayFast = ({
     if (event.url.includes('finish')) {
       setShowWeb(false)
       setPostBody('')
-      onClose(TRANSACTION_DETAILS?.m_payment_id)
+      onClose(true)
     }
   }
-
   return (
     <Modal visible={isVisible} animationType="slide">
       <SafeAreaView style={{ height: '100%' }}>
@@ -141,4 +139,4 @@ const PayFast = ({
   )
 }
 
-export default PayFast
+export default PayFastSaveCard

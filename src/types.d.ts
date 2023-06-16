@@ -13,3 +13,23 @@ export type PayFastSubscriptionDetails = {
   frequency: PayFastSubscriptionFrequency
   cycles: number
 }
+
+export type PayFastTransactionDetails = {
+  customerFirstName?: string
+  customerLastName?: string
+  customerEmailAddress?: string
+  customerPhoneNumber?: string
+  reference?: string
+  amount: number
+  itemName: string
+  itemDescription?: string
+}
+
+export type PayFastMerchantDetails = {
+  notifyUrl?: string
+  sandbox?: boolean
+  signature?: boolean
+  merchantId?: string
+  merchantKey?: string
+  passPhrase?: string
+}
