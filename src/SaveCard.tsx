@@ -1,30 +1,84 @@
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, Modal, SafeAreaView } from 'react-native'
 import { WebView, WebViewMessageEvent, WebViewNavigation } from 'react-native-webview'
+import { buildQueryString, generateMD5, removeUndefined } from './Helpers'
 import Button from './components/Button'
 import Flex from './components/Flex'
 import StyledText from './components/StyledText'
+import { PayFastMerchantDetails, PayFastTransactionDetails } from './types'
 
-type Props = {
-  cardToken: string
-  sandbox?: boolean
+type Props = PayFastMerchantDetails & {
+  paymentMethod?: 'ef' | 'cc' | 'dc' | 'mp' | 'mc' | 'sc' | 'ss' | 'zp' | 'mt' | 'rcs'
+  transactionDetails: PayFastTransactionDetails
   isVisible: boolean
-  passPhrase?: string
   onClose: (isDone?: boolean) => void
 }
 
-const PayFastUpdateCard = ({ cardToken, isVisible, onClose, sandbox }: Props) => {
+const PayFastSaveCard = ({
+  isVisible,
+  onClose,
+  sandbox,
+  transactionDetails,
+  notifyUrl,
+  signature,
+  merchantId,
+  merchantKey,
+  passPhrase
+}: Props) => {
   const [showWeb, setShowWeb] = useState(false)
 
-  let uri = sandbox
-    ? 'https://sandbox.payfast.co.za/eng/recurring/update/' + cardToken
-    : 'https://www.payfast.co.za/eng/recurring/update/' + cardToken
+  const [postBody, setPostBody] = useState('')
+
+  const uri = sandbox
+    ? 'https://sandbox.payfast.co.za/eng/process'
+    : 'https://www.payfast.co.za/eng/process'
 
   const injectedJavaScript = `
   document.getElementById("error-btn-back").addEventListener("click", ()=> {
     window.ReactNativeWebView.postMessage("PRESSED_GO_BACK");
   });
   `
+
+  const CUSTOMER_DATA = {
+    name_first: transactionDetails.customerFirstName,
+    name_last: transactionDetails?.customerLastName,
+    email_address: transactionDetails.customerEmailAddress,
+    cell_number: transactionDetails?.customerPhoneNumber
+  }
+  const TRANSACTION_DETAILS = {
+    m_payment_id: transactionDetails?.reference || new Date().getTime().toString(),
+    amount: 0,
+    item_name: 'Save Card',
+    payment_method: 'cc',
+    subscription_type: 2
+  }
+
+  const PAYLOAD = {
+    merchant_id: merchantId,
+    merchant_key: merchantKey,
+    notify_url: notifyUrl,
+    ...CUSTOMER_DATA,
+    ...TRANSACTION_DETAILS
+  }
+
+  const CLEAN_PAYLOAD = removeUndefined(PAYLOAD)
+
+  const getQueryString = () => {
+    let queryString = buildQueryString(CLEAN_PAYLOAD)
+    if (signature) {
+      const queryStringWithPassPhrase = queryString + '&passphrase=' + passPhrase
+      const signature = generateMD5(queryStringWithPassPhrase)
+      queryString = queryStringWithPassPhrase + '&signature=' + signature
+    }
+    setPostBody(queryString)
+    setShowWeb(true)
+  }
+
+  useEffect(() => {
+    if (isVisible) {
+      getQueryString()
+    }
+  }, [isVisible])
 
   const handleMessage = ({ nativeEvent }: WebViewMessageEvent) => {
     if (nativeEvent.data === 'PRESSED_GO_BACK') {
@@ -36,14 +90,10 @@ const PayFastUpdateCard = ({ cardToken, isVisible, onClose, sandbox }: Props) =>
   const handleNavigationChange = (event: WebViewNavigation) => {
     if (event.url.includes('finish')) {
       setShowWeb(false)
+      setPostBody('')
       onClose(true)
     }
   }
-
-  useEffect(() => {
-    setShowWeb(true)
-  }, [isVisible])
-
   return (
     <Modal visible={isVisible} animationType="slide">
       <SafeAreaView style={{ height: '100%' }}>
@@ -67,7 +117,15 @@ const PayFastUpdateCard = ({ cardToken, isVisible, onClose, sandbox }: Props) =>
                   <Button marginTop={50} text="Cancel" onPress={onClose} />
                 </Flex>
               )}
-              source={{ uri }}
+              source={{
+                uri,
+                headers: {
+                  Accept: '*/*',
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                method: 'POST',
+                body: postBody
+              }}
             />
           </Flex>
         ) : (
@@ -81,4 +139,4 @@ const PayFastUpdateCard = ({ cardToken, isVisible, onClose, sandbox }: Props) =>
   )
 }
 
-export default PayFastUpdateCard
+export default PayFastSaveCard
