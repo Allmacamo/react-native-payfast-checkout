@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.6.0...v1.6.1) (2024-10-17)
+
+
+### Bug Fixes
+
+* **types:** updates types file extention ([9aeb86f](https://github.com/Allmacamo/react-native-payfast-checkout/commit/9aeb86f7becab388ba143be143b182bf2a37b84e))
+
 # [1.6.0](https://github.com/Allmacamo/react-native-payfast-checkout/compare/v1.5.0...v1.6.0) (2023-06-16)
 
 
